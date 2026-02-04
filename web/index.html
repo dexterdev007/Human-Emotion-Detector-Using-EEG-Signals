@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Human Emotion Detector Using EEG Signals</title>
+    <meta name="theme-color" content="#f4f6fb" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="model.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <nav class="nav glass" aria-label="Primary">
+      <div class="nav-brand">
+        <span class="brand-logo" aria-hidden="true">DP</span>
+        <span class="brand-text">Dev's Project</span>
+      </div>
+      <div class="nav-links">
+        <a href="#input">Predict</a>
+        <a href="#results">Results</a>
+        <a href="#about">About</a>
+        <a href="#dataset">Dataset</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="ghost" aria-label="Toggle dark mode">
+          Toggle Theme
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content glass">
+        <p class="eyebrow">Dev's Project</p>
+        <h1>Human Emotion Detector Using EEG Signals</h1>
+        <p class="hero-subtitle">
+          Enter EEG channel values to predict emotion using linear regression
+          intensity and multi-class logistic regression with glassmorphism UI.
+        </p>
+        <div class="hero-actions">
+          <a href="#input" class="btn primary">Start Predicting</a>
+          <button id="autofill-hero" class="btn ghost">
+            Random Example
+          </button>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <span>5 Subjects</span>
+            <strong>155,000 Samples</strong>
+          </div>
+          <div>
+            <span>19 Channels</span>
+            <strong>Synthetic Labels</strong>
+          </div>
+          <div>
+            <span>Models</span>
+            <strong>Linear + Logistic</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="input" class="section">
+        <div class="section-header">
+          <div>
+            <h2>EEG Channel Input</h2>
+            <p>Enter one sample of microvolt values across 19 channels.</p>
+          </div>
+          <div class="section-actions">
+            <button id="autofill-btn" class="btn glass">Random Example</button>
+            <button id="clear-btn" class="btn ghost">Clear All</button>
+          </div>
+        </div>
+
+        <div id="alert" class="alert" hidden></div>
+
+        <form id="eeg-form" class="glass panel" novalidate>
+          <div class="input-grid" id="input-grid"></div>
+          <div class="form-footer">
+            <div class="tip">
+              Tip: Use steady values from a single time window for best results.
+            </div>
+            <button id="predict-btn" class="btn primary" type="submit">
+              <span class="btn-label">Predict Emotion</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Prediction Results</h2>
+            <p>Live inference with glassmorphism dashboards.</p>
+          </div>
+          <div class="section-actions">
+            <button id="details-btn" class="btn glass">View Details</button>
+            <button id="export-json-btn" class="btn ghost">Export JSON</button>
+            <button id="export-pdf-btn" class="btn ghost">Export PDF</button>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <div class="glass card result-primary">
+            <div class="emotion-head">
+              <div id="emotion-badge" class="emotion-badge">--</div>
+              <div>
+                <h3 id="emotion-label" aria-live="polite">Awaiting prediction</h3>
+                <p id="emotion-subtitle" aria-live="polite">
+                  Enter EEG values to begin.
+                </p>
+              </div>
+            </div>
+            <canvas id="activity-canvas" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="glass card">
+            <h4>Confidence</h4>
+            <div class="progress-ring">
+              <svg width="120" height="120" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                <circle id="confidence-ring" class="ring" cx="60" cy="60" r="50"></circle>
+              </svg>
+              <div id="confidence-value" class="progress-text" aria-live="polite">
+                0%
+              </div>
+            </div>
+          </div>
+
+          <div class="glass card">
+            <h4>Intensity</h4>
+            <div class="intensity-meter">
+              <div id="intensity-fill" class="intensity-fill"></div>
+            </div>
+            <div id="intensity-value" class="meter-label" aria-live="polite">
+              0.00 / 10
+            </div>
+          </div>
+
+          <div class="glass card">
+            <h4>Brain Wave</h4>
+            <canvas id="result-wave" aria-hidden="true"></canvas>
+          </div>
+        </div>
+
+        <div class="recent glass">
+          <h4>Recent Predictions</h4>
+          <div id="recent-list" class="recent-list"></div>
+        </div>
+      </section>
+
+      <section id="about" class="section split">
+        <div class="glass card">
+          <h2>About EEG Emotion Detection</h2>
+          <p>
+            EEG signals capture brain activity across multiple scalp locations.
+            This demo uses linear regression to estimate intensity (0-10) and
+            multi-class logistic regression to predict emotions from synthetic
+            labels derived from real EEG patterns.
+          </p>
+          <ul class="clean-list">
+            <li>Transparent, interpretable regression models</li>
+            <li>Designed for quick experimentation and learning</li>
+            <li>Glassmorphism UI with accessible interactions</li>
+          </ul>
+        </div>
+        <div class="glass card">
+          <h2>Tips for EEG Inputs</h2>
+          <ul class="clean-list">
+            <li>Use consistent sampling windows for all channels</li>
+            <li>Avoid mixing different sessions in one prediction</li>
+            <li>Values typically fall within ±100 microvolts</li>
+          </ul>
+          <div class="shortcuts">
+            <strong>Keyboard shortcuts</strong>
+            <span>Enter: Predict</span>
+            <span>Esc: Clear</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="dataset" class="section">
+        <div class="glass card">
+          <h2>Dataset Info</h2>
+          <div class="dataset-grid">
+            <div>
+              <span>Subjects</span>
+              <strong>5</strong>
+            </div>
+            <div>
+              <span>Channels</span>
+              <strong>19</strong>
+            </div>
+            <div>
+              <span>Samples</span>
+              <strong>155,000</strong>
+            </div>
+            <div>
+              <span>Labels</span>
+              <strong>Synthetic (demo)</strong>
+            </div>
+          </div>
+          <p class="muted">
+            The emotion classes are simulated by partitioning intensity scores
+            into six balanced groups to demonstrate multi-class logistic
+            regression behavior.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer glass">
+      <div>
+        Dev's Project • Built with linear + logistic regression only.
+      </div>
+      <div>Human emotion detection with EEG signals.</div>
+    </footer>
+
+    <div
+      id="modal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal-card glass">
+        <div class="modal-header">
+          <h3>Prediction Details</h3>
+          <button id="modal-close" class="ghost" aria-label="Close details">
+            Close
+          </button>
+        </div>
+        <div id="modal-content" class="modal-content"></div>
+      </div>
+    </div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  </body>
+</html>
