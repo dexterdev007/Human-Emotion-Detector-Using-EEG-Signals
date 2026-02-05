@@ -554,6 +554,17 @@ canvas {
   font-size: 18px;
 }
 
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.theory-summary {
+  margin-top: 18px;
+}
+
 .muted {
   color: var(--muted);
 }

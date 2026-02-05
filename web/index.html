@@ -28,6 +28,7 @@
         <a href="#results">Results</a>
         <a href="#about">About</a>
         <a href="#dataset">Dataset</a>
+        <a href="#theory">Theory</a>
       </div>
       <div class="nav-actions">
         <button id="theme-toggle" class="ghost" aria-label="Toggle dark mode">
@@ -215,6 +216,88 @@
             into six balanced groups to demonstrate multi-class logistic
             regression behavior.
           </p>
+        </div>
+      </section>
+
+      <section id="theory" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Theory (EEG + Emotion Recognition)</h2>
+            <p>Research-backed concepts summarized for quick learning.</p>
+          </div>
+        </div>
+
+        <div class="theory-grid">
+          <div class="glass card">
+            <h3>EEG Basics</h3>
+            <ul class="clean-list">
+              <li>EEG records microvolt-level brain activity from scalp electrodes.</li>
+              <li>10–20 system labels: F (frontal), C (central), T (temporal), P (parietal), O (occipital).</li>
+              <li>Odd = left hemisphere, even = right hemisphere.</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Frequency Bands</h3>
+            <ul class="clean-list">
+              <li>Delta: &lt;4 Hz (deep sleep)</li>
+              <li>Theta: 4–7 Hz (drowsy / memory)</li>
+              <li>Alpha: 8–13 Hz (relaxed)</li>
+              <li>Beta: 13–30 Hz (active thinking)</li>
+              <li>Gamma: &gt;30 Hz (attention)</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Preprocessing</h3>
+            <ul class="clean-list">
+              <li>Artifact removal + bandpass filtering (e.g., 4–45 Hz).</li>
+              <li>Segmentation into fixed windows (1–3 sec).</li>
+              <li>Standardization or normalization for model stability.</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Feature Work</h3>
+            <ul class="clean-list">
+              <li>Feature extraction: band power, Differential Entropy, Hjorth, HFD.</li>
+              <li>Feature selection: PCA or filter methods to reduce redundancy.</li>
+              <li>Goal: compact, emotion-informative signals.</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Models</h3>
+            <ul class="clean-list">
+              <li>Classic ML: SVM, Logistic Regression, Random Forest, XGBoost.</li>
+              <li>Deep models: CNN / RNN / GRU for spatiotemporal patterns.</li>
+              <li>Regression for continuous emotion scores (VAD space).</li>
+            </ul>
+          </div>
+
+          <div class="glass card">
+            <h3>Evaluation</h3>
+            <ul class="clean-list">
+              <li>Classification: accuracy, precision, recall, F1, ROC-AUC.</li>
+              <li>Regression: MSE, RMSE, MAE, R².</li>
+              <li>Cross-subject validation improves realism.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="glass card theory-summary">
+          <h3>How This Demo Maps to Research</h3>
+          <p>
+            This UI focuses on explainable models: linear regression for intensity
+            and logistic regression for emotion class. It mirrors the final
+            inference step of larger EEG pipelines, while keeping preprocessing
+            and feature engineering minimal for clarity and learning.
+          </p>
+          <ul class="clean-list">
+            <li>Input → scale → linear model → intensity (0–10).</li>
+            <li>Same input → logistic model → emotion class + confidence.</li>
+            <li>Expandable to PCA, band power, DE/HFD, or CNN-based models.</li>
+          </ul>
         </div>
       </section>
     </main>
