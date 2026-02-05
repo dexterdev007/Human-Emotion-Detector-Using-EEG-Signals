@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
+  <rect width="900" height="260" rx="20" fill="#f6f7fb" />
+  <text x="450" y="30" font-family="Sora, Arial, sans-serif" font-size="18" fill="#0f172a" text-anchor="middle">EEG Frequency Bands and States</text>
+
+  <g font-family="Sora, Arial, sans-serif" font-size="14" fill="#0f172a">
+    <rect x="40" y="60" width="820" height="34" rx="10" fill="#e2e8f0" />
+    <rect x="40" y="60" width="150" height="34" rx="10" fill="#94a3b8" />
+    <text x="60" y="83" fill="#0f172a">Delta &lt;4 Hz</text>
+    <text x="240" y="83" fill="#5b667a">Deep sleep, unconscious</text>
+
+    <rect x="40" y="102" width="820" height="34" rx="10" fill="#e2e8f0" />
+    <rect x="40" y="102" width="180" height="34" rx="10" fill="#8e9bff" />
+    <text x="60" y="125" fill="#0f172a">Theta 4–7 Hz</text>
+    <text x="240" y="125" fill="#5b667a">Drowsy, memory, creativity</text>
+
+    <rect x="40" y="144" width="820" height="34" rx="10" fill="#e2e8f0" />
+    <rect x="40" y="144" width="200" height="34" rx="10" fill="#7f7bff" />
+    <text x="60" y="167" fill="#0f172a">Alpha 8–13 Hz</text>
+    <text x="240" y="167" fill="#5b667a">Relaxed, eyes closed</text>
+
+    <rect x="40" y="186" width="820" height="34" rx="10" fill="#e2e8f0" />
+    <rect x="40" y="186" width="240" height="34" rx="10" fill="#4cc9f0" />
+    <text x="60" y="209" fill="#0f172a">Beta 13–30 Hz</text>
+    <text x="240" y="209" fill="#5b667a">Active thinking, focus</text>
+
+    <rect x="40" y="228" width="820" height="24" rx="10" fill="#e2e8f0" />
+    <rect x="40" y="228" width="280" height="24" rx="10" fill="#2dd4bf" />
+    <text x="60" y="245" fill="#0f172a">Gamma &gt;30 Hz</text>
+    <text x="240" y="245" fill="#5b667a">Attention, high processing</text>
+  </g>
+</svg>

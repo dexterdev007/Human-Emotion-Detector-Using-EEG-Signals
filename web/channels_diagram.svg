@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <defs>
+    <style>
+      .label { font-family: Sora, Arial, sans-serif; font-size: 14px; fill: #0f172a; }
+      .legend { font-family: Sora, Arial, sans-serif; font-size: 13px; fill: #0f172a; }
+      .dot { stroke: #ffffff; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="960" height="620" rx="24" fill="#f6f7fb" />
+
+  <!-- Head outline -->
+  <g transform="translate(160,60)">
+    <circle cx="320" cy="240" r="210" fill="#ffffff" stroke="#e2e8f0" stroke-width="4" />
+    <ellipse cx="90" cy="240" rx="22" ry="48" fill="#ffffff" stroke="#e2e8f0" stroke-width="4" />
+    <ellipse cx="550" cy="240" rx="22" ry="48" fill="#ffffff" stroke="#e2e8f0" stroke-width="4" />
+
+    <!-- Electrodes -->
+    <!-- Frontal / Fp (blue) -->
+    <circle class="dot" cx="260" cy="80" r="12" fill="#7f7bff" />
+    <text class="label" x="220" y="70">Fp1</text>
+    <circle class="dot" cx="380" cy="80" r="12" fill="#7f7bff" />
+    <text class="label" x="395" y="70">Fp2</text>
+
+    <circle class="dot" cx="190" cy="140" r="12" fill="#7f7bff" />
+    <text class="label" x="135" y="140">F7</text>
+    <circle class="dot" cx="270" cy="150" r="12" fill="#7f7bff" />
+    <text class="label" x="235" y="150">F3</text>
+    <circle class="dot" cx="320" cy="150" r="12" fill="#7f7bff" />
+    <text class="label" x="308" y="135">Fz</text>
+    <circle class="dot" cx="370" cy="150" r="12" fill="#7f7bff" />
+    <text class="label" x="385" y="150">F4</text>
+    <circle class="dot" cx="450" cy="140" r="12" fill="#7f7bff" />
+    <text class="label" x="465" y="140">F8</text>
+
+    <!-- Temporal (teal) -->
+    <circle class="dot" cx="140" cy="240" r="12" fill="#38bdf8" />
+    <text class="label" x="105" y="240">T7</text>
+    <circle class="dot" cx="500" cy="240" r="12" fill="#38bdf8" />
+    <text class="label" x="515" y="240">T8</text>
+
+    <!-- Central (purple) -->
+    <circle class="dot" cx="260" cy="230" r="12" fill="#8e9bff" />
+    <text class="label" x="225" y="230">C3</text>
+    <circle class="dot" cx="320" cy="230" r="12" fill="#8e9bff" />
+    <text class="label" x="308" y="215">Cz</text>
+    <circle class="dot" cx="380" cy="230" r="12" fill="#8e9bff" />
+    <text class="label" x="395" y="230">C4</text>
+
+    <!-- Parietal (orange) -->
+    <circle class="dot" cx="170" cy="330" r="12" fill="#f59e0b" />
+    <text class="label" x="130" y="330">P7</text>
+    <circle class="dot" cx="270" cy="330" r="12" fill="#f59e0b" />
+    <text class="label" x="235" y="330">P3</text>
+    <circle class="dot" cx="320" cy="330" r="12" fill="#f59e0b" />
+    <text class="label" x="308" y="315">Pz</text>
+    <circle class="dot" cx="370" cy="330" r="12" fill="#f59e0b" />
+    <text class="label" x="385" y="330">P4</text>
+    <circle class="dot" cx="470" cy="330" r="12" fill="#f59e0b" />
+    <text class="label" x="485" y="330">P8</text>
+
+    <!-- Occipital (green) -->
+    <circle class="dot" cx="280" cy="410" r="12" fill="#2dd4bf" />
+    <text class="label" x="245" y="420">O1</text>
+    <circle class="dot" cx="360" cy="410" r="12" fill="#2dd4bf" />
+    <text class="label" x="375" y="420">O2</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(140,520)">
+    <rect x="0" y="0" width="680" height="70" rx="16" fill="#ffffff" stroke="#e2e8f0" />
+    <circle cx="40" cy="35" r="8" fill="#7f7bff" />
+    <text class="legend" x="55" y="39">Frontal / Fp</text>
+
+    <circle cx="200" cy="35" r="8" fill="#8e9bff" />
+    <text class="legend" x="215" y="39">Central</text>
+
+    <circle cx="320" cy="35" r="8" fill="#38bdf8" />
+    <text class="legend" x="335" y="39">Temporal</text>
+
+    <circle cx="460" cy="35" r="8" fill="#f59e0b" />
+    <text class="legend" x="475" y="39">Parietal</text>
+
+    <circle cx="600" cy="35" r="8" fill="#2dd4bf" />
+    <text class="legend" x="615" y="39">Occipital</text>
+  </g>
+
+  <text class="legend" x="480" y="30" text-anchor="middle">19-Channel EEG Map (10–20 System)</text>
+</svg>

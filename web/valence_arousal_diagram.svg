@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520">
+  <rect width="720" height="520" rx="24" fill="#f6f7fb"/>
+
+  <g font-family="Sora, Arial, sans-serif" fill="#0f172a">
+    <text x="360" y="30" font-size="18" text-anchor="middle">Valence–Arousal Space</text>
+
+    <!-- Axes -->
+    <line x1="100" y1="420" x2="620" y2="420" stroke="#94a3b8" stroke-width="2" />
+    <line x1="360" y1="80" x2="360" y2="420" stroke="#94a3b8" stroke-width="2" />
+
+    <text x="360" y="455" font-size="14" text-anchor="middle">Valence (Negative → Positive)</text>
+    <text x="40" y="250" font-size="14" transform="rotate(-90 40 250)">Arousal (Low → High)</text>
+
+    <!-- Quadrant labels -->
+    <g font-size="14">
+      <text x="230" y="160" text-anchor="middle">Angry / Fear</text>
+      <text x="500" y="160" text-anchor="middle">Happy / Excited</text>
+      <text x="230" y="340" text-anchor="middle">Sad / Depressed</text>
+      <text x="500" y="340" text-anchor="middle">Calm / Relaxed</text>
+    </g>
+
+    <!-- Quadrant colors (soft) -->
+    <rect x="100" y="100" width="260" height="160" fill="#fee2e2" opacity="0.6" />
+    <rect x="360" y="100" width="260" height="160" fill="#dcfce7" opacity="0.6" />
+    <rect x="100" y="260" width="260" height="160" fill="#dbeafe" opacity="0.6" />
+    <rect x="360" y="260" width="260" height="160" fill="#e9d5ff" opacity="0.6" />
+
+    <!-- Axis ticks -->
+    <g stroke="#94a3b8" stroke-width="1">
+      <line x1="100" y1="420" x2="100" y2="430" />
+      <line x1="620" y1="420" x2="620" y2="430" />
+      <line x1="360" y1="80" x2="370" y2="80" />
+      <line x1="360" y1="420" x2="370" y2="420" />
+    </g>
+    <g font-size="12" fill="#5b667a">
+      <text x="100" y="450" text-anchor="middle">Negative</text>
+      <text x="620" y="450" text-anchor="middle">Positive</text>
+      <text x="330" y="85" text-anchor="end">High</text>
+      <text x="330" y="420" text-anchor="end">Low</text>
+    </g>
+  </g>
+</svg>

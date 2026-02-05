@@ -565,6 +565,38 @@ canvas {
   margin-top: 18px;
 }
 
+.pipeline-card img {
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.pipeline-card {
+  margin-top: 14px;
+}
+
+.theory-visuals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.theory-visuals .card {
+  width: 100%;
+}
+
+.theory-visuals img {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #fff;
+}
+
 .muted {
   color: var(--muted);
 }
