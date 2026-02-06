@@ -43,8 +43,8 @@
         <p class="eyebrow">Dev's Project</p>
         <h1>Human Emotion Detector Using EEG Signals</h1>
         <p class="hero-subtitle">
-          Enter EEG channel values to predict emotion using linear regression
-          intensity and multi-class logistic regression with glassmorphism UI.
+          Enter 32 EEG channel values to predict synthetic valence/arousal/dominance
+          scores with linear regression and high/low classes with logistic regression.
         </p>
         <div class="hero-actions">
           <a href="#input" class="btn primary">Start Predicting</a>
@@ -54,12 +54,12 @@
         </div>
         <div class="hero-meta">
           <div>
-            <span>5 Subjects</span>
-            <strong>155,000 Samples</strong>
+            <span>32 Subjects</span>
+            <strong>8,064 Samples</strong>
           </div>
           <div>
-            <span>19 Channels</span>
-            <strong>Synthetic Labels</strong>
+            <span>32 Channels</span>
+            <strong>Synthetic V/A/D Labels</strong>
           </div>
           <div>
             <span>Models</span>
@@ -74,7 +74,7 @@
         <div class="section-header">
           <div>
             <h2>EEG Channel Input</h2>
-            <p>Enter one sample of microvolt values across 19 channels.</p>
+            <p>Enter one sample of microvolt values across 32 channels.</p>
           </div>
           <div class="section-actions">
             <button id="autofill-btn" class="btn glass">Random Example</button>
@@ -166,8 +166,8 @@
           <p>
             EEG signals capture brain activity across multiple scalp locations.
             This demo uses linear regression to estimate intensity (0-10) and
-            multi-class logistic regression to predict emotions from synthetic
-            labels derived from real EEG patterns.
+            logistic regression to predict high/low emotion classes using
+            synthetic valence/arousal/dominance labels derived from EEG patterns.
           </p>
           <ul class="clean-list">
             <li>Transparent, interpretable regression models</li>
@@ -196,25 +196,24 @@
           <div class="dataset-grid">
             <div>
               <span>Subjects</span>
-              <strong>5</strong>
+              <strong>32</strong>
             </div>
             <div>
               <span>Channels</span>
-              <strong>19</strong>
+              <strong>32</strong>
             </div>
             <div>
               <span>Samples</span>
-              <strong>155,000</strong>
+              <strong>8,064</strong>
             </div>
             <div>
               <span>Labels</span>
-              <strong>Synthetic (demo)</strong>
+              <strong>Synthetic V/A/D</strong>
             </div>
           </div>
           <p class="muted">
-            The emotion classes are simulated by partitioning intensity scores
-            into six balanced groups to demonstrate multi-class logistic
-            regression behavior.
+            Labels are generated from EEG signal heuristics to create synthetic
+            valence, arousal, and dominance scores for training demos.
           </p>
         </div>
       </section>
@@ -300,10 +299,10 @@
 
         <div class="theory-visuals">
           <div class="glass card">
-            <h3>19-Channel EEG Map</h3>
+            <h3>32-Channel EEG Map</h3>
             <img
               src="channels_diagram.svg"
-              alt="EEG 10–20 system map showing the 19 channels used in this project."
+              alt="EEG 10–20 system map showing the 32 channels used in this project."
               loading="lazy"
             />
             <p class="muted">

@@ -22,7 +22,7 @@
     </g>
 
     <text x="105" y="85" font-weight="600">EEG Input</text>
-    <text x="105" y="108" font-size="12" fill="#5b667a">19 channels</text>
+    <text x="105" y="108" font-size="12" fill="#5b667a">32 channels</text>
 
     <text x="310" y="80" font-weight="600">Preprocess</text>
     <text x="310" y="104" font-size="12" fill="#5b667a">filter • segment</text>

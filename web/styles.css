@@ -589,7 +589,7 @@ canvas {
 .theory-visuals img {
   width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 440px;
   object-fit: contain;
   margin-top: 12px;
   border-radius: 16px;
