@@ -8,14 +8,13 @@ import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-WEB_DIR = ROOT / "web"
+WEB_DIR = Path(__file__).resolve().parent
 
-if not WEB_DIR.exists():
-    raise SystemExit("Missing web/ directory. Run scripts/build_model_js.py first.")
+if not (WEB_DIR / "index.html").exists():
+    raise SystemExit("Missing web/index.html.")
 
-# Serve from project root so "/" resolves to index.html which redirects to /web/.
-os.chdir(ROOT)
+# Serve directly from web/ so / loads index.html
+os.chdir(WEB_DIR)
 
 port = int(os.environ.get("PORT", "5500"))
 server = ThreadingHTTPServer(("127.0.0.1", port), SimpleHTTPRequestHandler)
