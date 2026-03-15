@@ -59,6 +59,10 @@ function initTheme() {
 }
 
 function setAlert(message) {
+  if (!alertBox) {
+    if (message) console.warn(message);
+    return;
+  }
   if (!message) {
     alertBox.hidden = true;
     alertBox.textContent = "";
@@ -133,6 +137,9 @@ function normalize01(value, min = 0, max = 1) {
 }
 
 function extractFeatures(imgEl) {
+  if (!featureCanvas) {
+    throw new Error("Feature canvas not found in DOM.");
+  }
   const ctx = featureCanvas.getContext("2d", { willReadFrequently: true });
   const w = 224;
   const h = 224;
@@ -283,6 +290,9 @@ function runModels(features) {
     if (cfg.type === "linear_softmax") probs = predictLinearSoftmax(features, cfg);
     else if (cfg.type === "rule_forest") probs = predictRuleForest(features, cfg);
     else probs = predictNonlinearSoftmax(features, cfg);
+    if (!Array.isArray(probs) || probs.length !== classNames.length) {
+      throw new Error(`Model '${name}' returned invalid probabilities.`);
+    }
     output[name] = probsToResult(probs);
   }
   return output;
@@ -351,11 +361,15 @@ function renderResults(results, final, knownLabel = null) {
     }
   });
 
-  finalLabel.textContent = `Final Prediction: ${final.label.replace("_", " ")}`;
-  if (knownLabel) {
-    finalSub.textContent = `Majority vote ${final.votes}/5 • Avg confidence ${(final.confidence * 100).toFixed(1)}% • Demo label: ${knownLabel.replace("_", " ")}`;
-  } else {
-    finalSub.textContent = `Majority vote ${final.votes}/5 • Avg confidence ${(final.confidence * 100).toFixed(1)}%`;
+  if (finalLabel) {
+    finalLabel.textContent = `Final Prediction: ${final.label.replace("_", " ")}`;
+  }
+  if (finalSub) {
+    if (knownLabel) {
+      finalSub.textContent = `Majority vote ${final.votes}/5 • Avg confidence ${(final.confidence * 100).toFixed(1)}% • Demo label: ${knownLabel.replace("_", " ")}`;
+    } else {
+      finalSub.textContent = `Majority vote ${final.votes}/5 • Avg confidence ${(final.confidence * 100).toFixed(1)}%`;
+    }
   }
 
   const rows = Object.entries(results)
@@ -367,6 +381,7 @@ function renderResults(results, final, knownLabel = null) {
     })
     .join("");
 
+  if (!tableWrap) return;
   tableWrap.innerHTML = `
     <table>
       <thead>
@@ -389,14 +404,15 @@ function clearResults() {
     if (el) el.textContent = "--";
     if (bar) bar.style.width = "0%";
   });
-  finalLabel.textContent = "Awaiting MRI input";
-  finalSub.textContent = "Upload image and run inference to see class predictions.";
-  tableWrap.textContent = "Run prediction to see probabilities.";
+  if (finalLabel) finalLabel.textContent = "Awaiting MRI input";
+  if (finalSub) finalSub.textContent = "Upload image and run inference to see class predictions.";
+  if (tableWrap) tableWrap.textContent = "Run prediction to see probabilities.";
 }
 
 function loadImageFromDataUrl(url) {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    img.crossOrigin = "anonymous";
     img.onload = () => resolve(img);
     img.onerror = () => reject(new Error("Could not load the selected image."));
     img.src = url;
@@ -432,21 +448,33 @@ function runInference() {
     setAlert("Upload MRI image first.");
     return;
   }
-  setAlert("");
-  const features = extractFeatures(currentImage);
-  let results = runModels(features);
-  if (currentKnownLabel) {
-    results = calibrateResultsWithKnownLabel(results, currentKnownLabel);
+  if (!classNames.length || !Object.keys(modelCfg).length) {
+    setAlert("Model config missing. Check brain-model.js.");
+    return;
   }
-  const final = getFinalVote(results);
-  renderResults(results, final, currentKnownLabel);
+  try {
+    setAlert("");
+    const features = extractFeatures(currentImage);
+    let results = runModels(features);
+    if (currentKnownLabel) {
+      results = calibrateResultsWithKnownLabel(results, currentKnownLabel);
+    }
+    const final = getFinalVote(results);
+    renderResults(results, final, currentKnownLabel);
+  } catch (err) {
+    setAlert(err?.message || "Prediction failed. Please try another MRI image.");
+  }
 }
 
 function clearAll() {
-  imageInput.value = "";
-  preview.src = "";
-  preview.hidden = true;
-  placeholder.hidden = false;
+  if (imageInput) imageInput.value = "";
+  if (preview) {
+    preview.src = "";
+    preview.hidden = true;
+  }
+  if (placeholder) {
+    placeholder.hidden = false;
+  }
   currentImage = null;
   currentKnownLabel = null;
   setAlert("");
@@ -454,33 +482,50 @@ function clearAll() {
 }
 
 function bindEvents() {
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.dataset.theme;
-    setTheme(current === "dark" ? "light" : "dark");
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme;
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 
-  imageInput.addEventListener("change", (event) => {
-    const file = event.target.files?.[0];
-    handleFile(file);
-  });
+  if (imageInput) {
+    imageInput.addEventListener("change", (event) => {
+      const file = event.target.files?.[0];
+      handleFile(file);
+    });
+  }
 
-  sampleImageBtn.addEventListener("click", async () => {
-    try {
-      const picked = demoMriImages[Math.floor(Math.random() * demoMriImages.length)];
-      const img = await loadImageFromDataUrl(picked.src);
-      currentImage = img;
-      currentKnownLabel = picked.label;
-      preview.src = picked.src;
-      preview.hidden = false;
-      placeholder.hidden = true;
-      setAlert("");
-    } catch (err) {
-      setAlert(err.message);
-    }
-  });
+  if (sampleImageBtn) {
+    sampleImageBtn.addEventListener("click", async () => {
+      try {
+        if (!demoMriImages.length) {
+          throw new Error("No demo MRI images configured.");
+        }
+        const picked = demoMriImages[Math.floor(Math.random() * demoMriImages.length)];
+        const img = await loadImageFromDataUrl(picked.src);
+        currentImage = img;
+        currentKnownLabel = picked.label;
+        if (preview) {
+          preview.src = picked.src;
+          preview.hidden = false;
+        }
+        if (placeholder) {
+          placeholder.hidden = true;
+        }
+        setAlert("");
+      } catch (err) {
+        setAlert(err.message);
+      }
+    });
+  }
 
-  clearImageBtn.addEventListener("click", clearAll);
-  runBtn.addEventListener("click", runInference);
+  if (clearImageBtn) {
+    clearImageBtn.addEventListener("click", clearAll);
+  }
+  if (runBtn) {
+    runBtn.addEventListener("click", runInference);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
