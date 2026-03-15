@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neuro AI Suite</title>
+    <meta name="theme-color" content="#f4f6fb" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <nav class="nav glass" aria-label="Primary">
+      <div class="nav-brand">
+        <span class="brand-logo" aria-hidden="true">DP</span>
+        <span class="brand-text">Dev's Project</span>
+      </div>
+      <div class="nav-links">
+        <a href="#modules">Modules</a>
+        <a href="#modules">About</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="ghost" aria-label="Toggle dark mode">
+          Toggle Theme
+        </button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section id="modules" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Choose Module</h2>
+            <p>Both modules use the same frontend design language.</p>
+          </div>
+        </div>
+
+        <div class="module-grid">
+          <article class="glass module-card">
+            <div class="module-badge">EEG</div>
+            <h3>Human Emotion Recognition</h3>
+            <p>
+              Predict emotion state using 32-channel EEG inputs with linear and
+              logistic regression workflow.
+            </p>
+            <ul class="clean-list compact">
+              <li>Valence-Arousal-Dominance view</li>
+              <li>Live prediction dashboard</li>
+              <li>Theory diagrams included</li>
+            </ul>
+            <a class="btn primary" href="eeg.html">Open EEG Module</a>
+          </article>
+
+          <article class="glass module-card">
+            <div class="module-badge">MRI</div>
+            <h3>Brain Tumor Detection</h3>
+            <p>
+              Upload MRI scans and compare standard ML and DL model outputs in
+              a unified result panel.
+            </p>
+            <ul class="clean-list compact">
+              <li>Logistic Regression, SVM, Random Forest</li>
+              <li>CNN and ResNet50 blocks</li>
+              <li>Model-wise confidence breakdown</li>
+            </ul>
+            <a class="btn primary" href="brain-tumor.html">Open Tumor Module</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const themeToggle = document.getElementById("theme-toggle");
+      function setTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem("eeg-theme", theme);
+      }
+      (function initTheme() {
+        const saved = localStorage.getItem("eeg-theme");
+        if (saved) {
+          setTheme(saved);
+          return;
+        }
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+      })();
+      themeToggle.addEventListener("click", () => {
+        const current = document.documentElement.dataset.theme;
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

@@ -227,6 +227,44 @@ canvas {
   padding: 0 20px 80px;
 }
 
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.module-card {
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.module-card h3 {
+  margin: 0;
+}
+
+.module-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.module-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #7f7bff, #4cc9f0);
+}
+
+.compact {
+  margin: 0;
+}
+
 .section {
   margin-top: 64px;
 }
@@ -250,6 +288,128 @@ canvas {
 
 .panel {
   padding: 24px;
+}
+
+.tumor-upload-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.file-drop {
+  border: 2px dashed rgba(127, 123, 255, 0.4);
+  border-radius: 18px;
+  padding: 24px;
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(127, 123, 255, 0.05);
+}
+
+.file-drop input {
+  display: none;
+}
+
+.file-drop-title {
+  font-weight: 600;
+}
+
+.file-drop-sub {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tumor-preview-wrap {
+  min-height: 260px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.tumor-placeholder {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#mri-preview {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  display: block;
+}
+
+.tumor-controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tumor-summary-card {
+  margin-bottom: 16px;
+}
+
+.tumor-summary-card h3 {
+  margin: 0;
+}
+
+.tumor-summary-card p {
+  margin: 8px 0 0;
+}
+
+.tumor-model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tumor-model-card h4 {
+  margin: 0 0 4px;
+}
+
+.model-result {
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.mini-bar {
+  margin-top: 10px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.mini-bar span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #7f7bff, #4cc9f0);
+  transition: width 0.35s ease;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table-wrap th,
+.table-wrap td {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 8px;
+  text-align: left;
+}
+
+.table-wrap th {
+  background: rgba(127, 123, 255, 0.1);
 }
 
 .input-grid {
@@ -590,6 +750,28 @@ canvas {
   width: 100%;
   height: auto;
   max-height: 440px;
+  object-fit: contain;
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #fff;
+}
+
+.tumor-theory-visuals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.tumor-theory-visuals .card {
+  width: 100%;
+}
+
+.tumor-theory-visuals img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
   object-fit: contain;
   margin-top: 12px;
   border-radius: 16px;

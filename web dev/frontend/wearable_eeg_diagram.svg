@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-label="Lab EEG and wearable EEG comparison">
+  <defs>
+    <style>
+      .title { font: 700 34px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 24px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 18px 'Sora', Arial, sans-serif; fill: #334155; }
+      .tag { font: 700 18px 'Sora', Arial, sans-serif; fill: #fff; }
+    </style>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7f7bff"/>
+      <stop offset="100%" stop-color="#4cc9f0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="960" height="520" rx="28" fill="#f8fbff"/>
+  <text x="480" y="54" text-anchor="middle" class="title">Conventional EEG vs Wearable EEG</text>
+
+  <rect x="70" y="100" width="380" height="340" rx="24" fill="#eef2ff" stroke="#c7d2fe"/>
+  <rect x="510" y="100" width="380" height="340" rx="24" fill="#ecfeff" stroke="#a5f3fc"/>
+
+  <circle cx="250" cy="240" r="92" fill="#e2e8f0" stroke="#94a3b8" stroke-width="4"/>
+  <path d="M158,230 C170,180 330,180 342,230" fill="none" stroke="#0f172a" stroke-width="6"/>
+  <circle cx="210" cy="190" r="8" fill="#7f7bff"/>
+  <circle cx="250" cy="175" r="8" fill="#7f7bff"/>
+  <circle cx="290" cy="190" r="8" fill="#7f7bff"/>
+  <line x1="210" y1="198" x2="180" y2="150" stroke="#7f7bff" stroke-width="3"/>
+  <line x1="250" y1="183" x2="250" y2="135" stroke="#7f7bff" stroke-width="3"/>
+  <line x1="290" y1="198" x2="320" y2="150" stroke="#7f7bff" stroke-width="3"/>
+  <text x="250" y="370" text-anchor="middle" class="label">Lab EEG</text>
+  <text x="250" y="398" text-anchor="middle" class="sub">High channel density</text>
+
+  <path d="M560,220 C600,145 760,145 820,220 C770,270 610,270 560,220 Z" fill="#dbeafe" stroke="#60a5fa" stroke-width="4"/>
+  <rect x="630" y="220" width="130" height="45" rx="18" fill="#0ea5e9"/>
+  <circle cx="650" cy="242" r="8" fill="#fff"/>
+  <circle cx="720" cy="242" r="8" fill="#fff"/>
+  <text x="695" y="370" text-anchor="middle" class="label">Wearable EEG</text>
+  <text x="695" y="398" text-anchor="middle" class="sub">Portable + practical</text>
+
+  <rect x="390" y="455" width="180" height="42" rx="14" fill="url(#grad)"/>
+  <text x="480" y="482" text-anchor="middle" class="tag">Real-World Emotion AI</text>
+</svg>

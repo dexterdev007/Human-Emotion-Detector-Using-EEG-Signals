@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" role="img" aria-label="MRI class examples for glioma, meningioma, no tumor, pituitary">
+  <defs>
+    <style>
+      .title { font: 700 32px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 52px 'Georgia', serif; fill: #fff; }
+    </style>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#4b5563"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1600" height="420" rx="24" fill="#f8fbff"/>
+  <text x="60" y="55" class="title">MRI Class Examples</text>
+
+  <g transform="translate(10,75)">
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" width="375" height="230" fill="#000"/>
+      <rect x="10" y="10" width="355" height="210" fill="url(#scan)"/>
+      <ellipse cx="185" cy="105" rx="72" ry="88" fill="rgba(255,255,255,0.12)"/>
+      <circle cx="225" cy="92" r="19" fill="rgba(220,38,38,0.65)"/>
+      <rect x="26" y="242" width="325" height="66" rx="12" fill="#3b82f6"/>
+      <text x="188" y="287" text-anchor="middle" class="label">Glioma</text>
+    </g>
+
+    <g transform="translate(400,0)">
+      <rect x="0" y="0" width="375" height="230" fill="#000"/>
+      <rect x="10" y="10" width="355" height="210" fill="url(#scan)"/>
+      <ellipse cx="185" cy="105" rx="86" ry="90" fill="rgba(255,255,255,0.14)"/>
+      <ellipse cx="250" cy="85" rx="28" ry="28" fill="rgba(239,68,68,0.62)"/>
+      <rect x="26" y="242" width="325" height="66" rx="12" fill="#3b82f6"/>
+      <text x="188" y="287" text-anchor="middle" class="label">Meningioma</text>
+    </g>
+
+    <g transform="translate(800,0)">
+      <rect x="0" y="0" width="375" height="230" fill="#000"/>
+      <rect x="10" y="10" width="355" height="210" fill="url(#scan)"/>
+      <ellipse cx="185" cy="105" rx="84" ry="92" fill="rgba(255,255,255,0.12)"/>
+      <rect x="26" y="242" width="325" height="66" rx="12" fill="#3b82f6"/>
+      <text x="188" y="287" text-anchor="middle" class="label">No-Tumor</text>
+    </g>
+
+    <g transform="translate(1200,0)">
+      <rect x="0" y="0" width="375" height="230" fill="#000"/>
+      <rect x="10" y="10" width="355" height="210" fill="url(#scan)"/>
+      <ellipse cx="185" cy="105" rx="80" ry="92" fill="rgba(255,255,255,0.13)"/>
+      <ellipse cx="210" cy="120" rx="26" ry="30" fill="rgba(248,113,113,0.64)"/>
+      <rect x="26" y="242" width="325" height="66" rx="12" fill="#3b82f6"/>
+      <text x="188" y="287" text-anchor="middle" class="label">Pituitary</text>
+    </g>
+  </g>
+</svg>

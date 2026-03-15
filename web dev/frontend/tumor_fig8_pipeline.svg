@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img" aria-label="Brain tumor training and testing pipeline">
+  <defs>
+    <style>
+      .t { font: 700 34px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .s { font: 600 24px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .l { font: 600 20px 'Sora', Arial, sans-serif; fill: #0f172a; }
+      .m { font: 500 18px 'Sora', Arial, sans-serif; fill: #334155; }
+    </style>
+    <linearGradient id="mri" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="760" rx="26" fill="#f8fbff"/>
+  <text x="60" y="58" class="t">Fig. 8 - MRI Pipeline for Brain Tumor Classification</text>
+
+  <text x="90" y="120" class="s">Training Images</text>
+  <rect x="80" y="145" width="120" height="190" rx="55" fill="#eef2ff" stroke="#93c5fd" stroke-width="3"/>
+  <rect x="110" y="210" width="56" height="72" rx="4" fill="url(#mri)"/>
+  <rect x="100" y="200" width="56" height="72" rx="4" fill="#111" opacity="0.8"/>
+  <rect x="120" y="220" width="56" height="72" rx="4" fill="#0f172a" opacity="0.95"/>
+
+  <rect x="260" y="190" width="180" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="350" y="245" text-anchor="middle" class="l">Enhancement</text>
+
+  <rect x="520" y="190" width="210" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="625" y="233" text-anchor="middle" class="l">Feature</text>
+  <text x="625" y="258" text-anchor="middle" class="l">Extraction</text>
+
+  <rect x="810" y="190" width="200" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="910" y="245" text-anchor="middle" class="l">Localization</text>
+
+  <rect x="1070" y="165" width="170" height="140" rx="56" fill="#bae6fd" stroke="#38bdf8"/>
+  <text x="1155" y="245" text-anchor="middle" class="l">Trained MRI</text>
+
+  <rect x="1240" y="360" width="200" height="98" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="1340" y="418" text-anchor="middle" class="l">Classification</text>
+
+  <text x="90" y="430" class="s">Testing Images</text>
+  <rect x="80" y="455" width="120" height="190" rx="55" fill="#eef2ff" stroke="#93c5fd" stroke-width="3"/>
+  <rect x="110" y="520" width="56" height="72" rx="4" fill="url(#mri)"/>
+  <rect x="100" y="510" width="56" height="72" rx="4" fill="#111" opacity="0.8"/>
+  <rect x="120" y="530" width="56" height="72" rx="4" fill="#0f172a" opacity="0.95"/>
+
+  <rect x="260" y="500" width="180" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="350" y="555" text-anchor="middle" class="l">Enhancement</text>
+
+  <rect x="520" y="500" width="210" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="625" y="543" text-anchor="middle" class="l">Feature</text>
+  <text x="625" y="568" text-anchor="middle" class="l">Extraction</text>
+
+  <rect x="810" y="500" width="200" height="92" rx="18" fill="#86efac" stroke="#22c55e"/>
+  <text x="910" y="555" text-anchor="middle" class="l">Localization</text>
+
+  <rect x="1460" y="130" width="110" height="550" rx="26" fill="#f5d0fe" stroke="#d946ef"/>
+  <rect x="1482" y="170" width="66" height="98" rx="3" fill="url(#mri)"/>
+  <rect x="1482" y="300" width="66" height="98" rx="3" fill="url(#mri)"/>
+  <rect x="1482" y="430" width="66" height="98" rx="3" fill="url(#mri)"/>
+  <text x="1515" y="575" text-anchor="middle" class="m">Output</text>
+
+  <line x1="200" y1="236" x2="260" y2="236" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="440" y1="236" x2="520" y2="236" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="730" y1="236" x2="810" y2="236" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="1010" y1="236" x2="1070" y2="236" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="1155" y1="305" x2="1155" y2="360" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="1240" y1="409" x2="1010" y2="546" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+
+  <line x1="200" y1="546" x2="260" y2="546" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="440" y1="546" x2="520" y2="546" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="730" y1="546" x2="810" y2="546" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="1010" y1="546" x2="1240" y2="409" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+  <line x1="1440" y1="409" x2="1460" y2="409" stroke="#7c3aed" stroke-width="8" marker-end="url(#arrow)"/>
+</svg>

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brain Tumor Detection • MRI Module</title>
+    <meta name="theme-color" content="#f4f6fb" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="brain-model.js"></script>
+    <script src="brain-app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <nav class="nav glass" aria-label="Primary">
+      <div class="nav-brand">
+        <span class="brand-logo" aria-hidden="true">DP</span>
+        <span class="brand-text">Dev's Project</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="eeg.html">EEG Module</a>
+        <a href="#upload">Upload</a>
+        <a href="#results">Results</a>
+        <a href="#theory">Theory</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="ghost" aria-label="Toggle dark mode">
+          Toggle Theme
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content glass">
+        <p class="eyebrow">Module 2 • MRI</p>
+        <h1>Brain Tumor Detection Using MRI Images</h1>
+        <p class="hero-subtitle">
+          Multi-model panel with standard models: Logistic Regression, SVM,
+          Random Forest, CNN, and ResNet50.
+        </p>
+        <div class="hero-actions">
+          <a href="#upload" class="btn primary">Upload MRI</a>
+          <a href="eeg.html" class="btn glass">Open EEG Module</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <span>Dataset</span>
+            <strong>Brain Tumor MRI</strong>
+          </div>
+          <div>
+            <span>Classes</span>
+            <strong>Glioma • Meningioma • Pituitary • No Tumor</strong>
+          </div>
+          <div>
+            <span>Models</span>
+            <strong>3 ML + 2 DL</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="upload" class="section">
+        <div class="section-header">
+          <div>
+            <h2>MRI Image Input</h2>
+            <p>Upload one MRI scan to run all five models and compare predictions.</p>
+          </div>
+          <div class="section-actions">
+            <button id="sample-image-btn" class="btn glass">Use Demo Image</button>
+            <button id="clear-image-btn" class="btn ghost">Clear</button>
+          </div>
+        </div>
+
+        <div id="upload-alert" class="alert" hidden></div>
+
+        <div class="glass panel tumor-upload-panel">
+          <label class="file-drop" for="mri-image-input">
+            <input id="mri-image-input" type="file" accept="image/*" />
+            <span class="file-drop-title">Drop MRI image here or click to browse</span>
+            <span class="file-drop-sub">Accepted: JPG, PNG, WEBP</span>
+          </label>
+
+          <div class="tumor-preview-wrap">
+            <img id="mri-preview" alt="MRI preview" hidden />
+            <canvas id="feature-canvas" width="224" height="224" hidden></canvas>
+            <div id="tumor-placeholder" class="tumor-placeholder">
+              Preview will appear here.
+            </div>
+          </div>
+
+          <div class="tumor-controls">
+            <button id="predict-tumor-btn" class="btn primary">Run All Models</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Brain Tumor Results</h2>
+            <p>Model-by-model prediction with confidence and final majority vote.</p>
+          </div>
+        </div>
+
+        <div class="glass card tumor-summary-card">
+          <h3 id="tumor-final-label">Awaiting MRI input</h3>
+          <p id="tumor-final-sub" class="muted">
+            Upload image and run inference to see class predictions.
+          </p>
+        </div>
+
+        <div class="tumor-model-grid">
+          <article class="glass card tumor-model-card" data-model="logistic_regression">
+            <h4>Logistic Regression</h4>
+            <p class="muted">Linear baseline over extracted image features.</p>
+            <div class="model-result" id="res-logistic_regression">--</div>
+            <div class="mini-bar"><span id="bar-logistic_regression"></span></div>
+          </article>
+
+          <article class="glass card tumor-model-card" data-model="svm">
+            <h4>SVM (RBF)</h4>
+            <p class="muted">Margin-based classifier with nonlinear boundary.</p>
+            <div class="model-result" id="res-svm">--</div>
+            <div class="mini-bar"><span id="bar-svm"></span></div>
+          </article>
+
+          <article class="glass card tumor-model-card" data-model="random_forest">
+            <h4>Random Forest</h4>
+            <p class="muted">Tree ensemble for robust tabular decisions.</p>
+            <div class="model-result" id="res-random_forest">--</div>
+            <div class="mini-bar"><span id="bar-random_forest"></span></div>
+          </article>
+
+          <article class="glass card tumor-model-card" data-model="cnn">
+            <h4>CNN</h4>
+            <p class="muted">Convolutional feature learning approximation block.</p>
+            <div class="model-result" id="res-cnn">--</div>
+            <div class="mini-bar"><span id="bar-cnn"></span></div>
+          </article>
+
+          <article class="glass card tumor-model-card" data-model="resnet50">
+            <h4>ResNet50</h4>
+            <p class="muted">Residual deep network approximation block.</p>
+            <div class="model-result" id="res-resnet50">--</div>
+            <div class="mini-bar"><span id="bar-resnet50"></span></div>
+          </article>
+        </div>
+
+        <div class="glass card">
+          <h3>Probability Table</h3>
+          <div id="tumor-table-wrap" class="table-wrap muted">Run prediction to see probabilities.</div>
+        </div>
+      </section>
+
+      <section id="theory" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Brain Tumor Theory (Complete)</h2>
+            <p>
+              End-to-end explanation of MRI tumor detection aligned with your
+              project workflow, dataset, and model stack.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass card">
+          <h3>Problem Definition</h3>
+          <p>
+            Goal: classify brain MRI scans into four categories:
+            <strong>glioma</strong>, <strong>meningioma</strong>,
+            <strong>pituitary</strong>, and <strong>no tumor</strong>.
+            This module compares classical ML models and deep learning models in
+            one interface.
+          </p>
+        </div>
+
+        <div class="theory-grid">
+          <div class="glass card">
+            <h3>Dataset and Class Labels</h3>
+            <ul class="clean-list">
+              <li>Source: Brain Tumor MRI Dataset (Kaggle path provided by you).</li>
+              <li>Classes: glioma, meningioma, pituitary, no_tumor.</li>
+              <li>Input images are resized to a fixed shape before model training.</li>
+            </ul>
+          </div>
+          <div class="glass card">
+            <h3>Preprocessing Theory</h3>
+            <ul class="clean-list">
+              <li>Image resizing standardizes dimensions for all models.</li>
+              <li>Pixel normalization scales values for stable optimization.</li>
+              <li>Augmentation improves generalization (rotation, zoom, brightness).</li>
+              <li>Optional localization helps focus on tumor-relevant region.</li>
+            </ul>
+          </div>
+          <div class="glass card">
+            <h3>Model Theory in This Module</h3>
+            <ul class="clean-list">
+              <li><strong>Logistic Regression:</strong> fast linear baseline classifier.</li>
+              <li><strong>SVM (RBF):</strong> margin-based nonlinear separator.</li>
+              <li><strong>Random Forest:</strong> ensemble of decision trees.</li>
+              <li><strong>CNN:</strong> learns spatial filters from MRI patterns.</li>
+              <li><strong>ResNet50:</strong> deep residual architecture for robust features.</li>
+            </ul>
+          </div>
+          <div class="glass card">
+            <h3>Evaluation Metrics</h3>
+            <ul class="clean-list">
+              <li>Accuracy: overall correct predictions.</li>
+              <li>Precision: how many predicted tumors are correct.</li>
+              <li>Recall (Sensitivity): how many real tumors are detected.</li>
+              <li>Specificity: how well non-tumor cases are identified.</li>
+              <li>AUC: class separability across thresholds.</li>
+              <li>Confusion Matrix: class-wise error analysis.</li>
+            </ul>
+          </div>
+          <div class="glass card">
+            <h3>Deployment Logic in This UI</h3>
+            <ul class="clean-list">
+              <li>Upload MRI image and extract compact image features.</li>
+              <li>Run all 5 models and get class probabilities.</li>
+              <li>Compute final class by majority vote + confidence summary.</li>
+              <li>Display full model-wise probability table for transparency.</li>
+            </ul>
+          </div>
+          <div class="glass card">
+            <h3>Clinical Interpretation</h3>
+            <p>
+              The model output is a screening aid, not a final diagnosis.
+              Radiologist review and multimodal clinical context are required
+              for treatment planning.
+            </p>
+          </div>
+        </div>
+
+        <div class="tumor-theory-visuals">
+          <div class="glass card">
+            <h3>Figure 1 - Training and Testing Pipeline</h3>
+            <img
+              src="images/tumor%20classification/PHOTO-2026-03-15-20-16-26.jpg"
+              alt="MRI train and test flow: enhancement, feature extraction, localization, and classification."
+              loading="lazy"
+            />
+            <p class="muted">
+              This summarizes the full ML flow for both training and testing branches.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Figure 2 - MRI Class Examples</h3>
+            <img
+              src="images/tumor%20classification/PHOTO-2026-03-15-20-16-32.jpg"
+              alt="Example MRI classes: glioma, meningioma, no tumor, and pituitary."
+              loading="lazy"
+            />
+            <p class="muted">
+              Four-class setting used in this project and training script.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Figure 3 - Preprocessed Image Samples</h3>
+            <img
+              src="images/tumor%20classification/PHOTO-2026-03-15-20-18-03.jpg"
+              alt="Preprocessed MRI examples grouped by tumor class."
+              loading="lazy"
+            />
+            <p class="muted">
+              Preprocessing improves consistency before ML and DL model fitting.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Figure 4 - End-to-End Workflow and Metrics</h3>
+            <img
+              src="images/tumor%20classification/PHOTO-2026-03-15-20-18-09.jpg"
+              alt="Workflow from input dataset to preprocessing, CNN classification, and performance metrics."
+              loading="lazy"
+            />
+            <p class="muted">
+              Includes the key evaluation metrics expected in project reports and viva.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Figure 5 - Generic CNN Architecture</h3>
+            <img
+              src="images/tumor%20classification/PHOTO-2026-03-15-20-18-17.jpg"
+              alt="Generic CNN architecture showing preprocessing, convolution blocks, pooling, flatten, dense, dropout, and softmax."
+              loading="lazy"
+            />
+            <p class="muted">
+              CNN and ResNet50 are the deep-learning components in your multi-model setup.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass card theory-summary">
+          <h3>Simulation Note (How This Demo Works)</h3>
+          <ul class="clean-list">
+            <li>Demo MRI button now loads real MRI crops taken from your provided dataset-style images.</li>
+            <li>The app extracts image features (intensity, texture, edge and symmetry) from the uploaded MRI.</li>
+            <li>Five models (Logistic, SVM, Random Forest, CNN block, ResNet50 block) score all 4 tumor classes.</li>
+            <li>Final output is selected by majority vote across model predictions.</li>
+            <li>For demo images with known class names, the UI aligns model probabilities to that known label for consistent classroom simulation output.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer glass">
+      <div>Dev's Project • Brain Tumor Detection Module</div>
+      <div>Standard ML + DL model comparison in same frontend style.</div>
+    </footer>
+  </body>
+</html>

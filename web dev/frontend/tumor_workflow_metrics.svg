@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 760" role="img" aria-label="Brain tumor workflow from input to metrics">
+  <defs>
+    <style>
+      .head { font: 700 56px 'Sora', Arial, sans-serif; fill: #ffffff; }
+      .txt { font: 500 58px 'Georgia', serif; fill: #111827; }
+      .sub { font: 500 50px 'Georgia', serif; fill: #111827; }
+    </style>
+    <marker id="arr" markerWidth="16" markerHeight="16" refX="12" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="2048" height="760" rx="20" fill="#f8fafc"/>
+
+  <g transform="translate(36,50)">
+    <rect x="0" y="0" width="390" height="70" rx="12" fill="#3b82f6"/>
+    <text x="195" y="50" text-anchor="middle" class="head">Input dataset</text>
+    <rect x="0" y="86" width="390" height="590" fill="none" stroke="#a1a1aa" stroke-dasharray="6 6" stroke-width="2"/>
+    <rect x="20" y="116" width="170" height="250" fill="#000"/>
+    <rect x="210" y="116" width="170" height="250" fill="#000"/>
+    <rect x="20" y="386" width="170" height="250" fill="#000"/>
+    <rect x="210" y="386" width="170" height="250" fill="#000"/>
+  </g>
+
+  <g transform="translate(520,50)">
+    <rect x="0" y="0" width="390" height="70" rx="12" fill="#3b82f6"/>
+    <text x="195" y="50" text-anchor="middle" class="head">Preprocessing</text>
+    <rect x="0" y="86" width="390" height="590" fill="none" stroke="#a1a1aa" stroke-dasharray="6 6" stroke-width="2"/>
+    <text x="18" y="160" class="txt">Resizing</text>
+    <text x="18" y="222" class="txt">Labeling</text>
+    <text x="18" y="284" class="txt">Data Augmentation</text>
+    <text x="38" y="346" class="sub">- Rotation</text>
+    <text x="38" y="408" class="sub">- Zoom / Scaling</text>
+    <text x="38" y="470" class="sub">- Brightness</text>
+  </g>
+
+  <g transform="translate(1004,50)">
+    <rect x="0" y="0" width="500" height="70" rx="12" fill="#3b82f6"/>
+    <text x="250" y="50" text-anchor="middle" class="head">CNN Classification</text>
+    <rect x="0" y="86" width="500" height="590" fill="none" stroke="#a1a1aa" stroke-dasharray="6 6" stroke-width="2"/>
+    <rect x="30" y="200" width="310" height="170" rx="28" fill="#3b82f6"/>
+    <text x="185" y="290" text-anchor="middle" class="head">Training -</text>
+    <text x="185" y="350" text-anchor="middle" class="head">Validation</text>
+    <rect x="370" y="220" width="100" height="140" rx="20" fill="#3b82f6"/>
+    <text x="420" y="305" text-anchor="middle" class="head">Testing</text>
+  </g>
+
+  <g transform="translate(1588,50)">
+    <rect x="0" y="0" width="420" height="70" rx="12" fill="#3b82f6"/>
+    <text x="210" y="50" text-anchor="middle" class="head">Performance</text>
+    <rect x="0" y="86" width="420" height="590" fill="none" stroke="#a1a1aa" stroke-dasharray="6 6" stroke-width="2"/>
+    <text x="20" y="160" class="txt">Accuracy</text>
+    <text x="20" y="225" class="txt">Precision</text>
+    <text x="20" y="290" class="txt">Recall</text>
+    <text x="20" y="355" class="txt">Specificity</text>
+    <text x="20" y="420" class="txt">Area under curve</text>
+    <text x="20" y="485" class="txt">(AUC)</text>
+  </g>
+
+  <line x1="430" y1="390" x2="500" y2="390" stroke="#64748b" stroke-width="8" marker-end="url(#arr)"/>
+  <line x1="915" y1="390" x2="985" y2="390" stroke="#64748b" stroke-width="8" marker-end="url(#arr)"/>
+  <line x1="1510" y1="390" x2="1570" y2="390" stroke="#64748b" stroke-width="8" marker-end="url(#arr)"/>
+</svg>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Human Emotion Detector Using EEG Signals</title>
+    <title>Human Emotion Recognition • EEG Module</title>
     <meta name="theme-color" content="#f4f6fb" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,10 +24,10 @@
         <span class="brand-text">Dev's Project</span>
       </div>
       <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="brain-tumor.html">Brain Tumor</a>
         <a href="#input">Predict</a>
         <a href="#results">Results</a>
-        <a href="#about">About</a>
-        <a href="#dataset">Dataset</a>
         <a href="#theory">Theory</a>
       </div>
       <div class="nav-actions">
@@ -40,14 +40,15 @@
     <header class="hero" id="top">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-content glass">
-        <p class="eyebrow">Dev's Project</p>
-        <h1>Human Emotion Detector Using EEG Signals</h1>
+        <p class="eyebrow">Module 1 • EEG</p>
+        <h1>Human Emotion Recognition Using EEG Signals</h1>
         <p class="hero-subtitle">
           Enter 32 EEG channel values to predict synthetic valence/arousal/dominance
           scores with linear regression and high/low classes with logistic regression.
         </p>
         <div class="hero-actions">
           <a href="#input" class="btn primary">Start Predicting</a>
+          <a href="brain-tumor.html" class="btn glass">Open Tumor Module</a>
           <button id="autofill-hero" class="btn ghost">
             Random Example
           </button>
@@ -59,8 +60,8 @@
           </div>
           <div>
             <span>32 Channels</span>
-            <strong>Synthetic V/A/D Labels</strong>
-          </div>
+              <strong>Labeled Emotion Classes</strong>
+            </div>
           <div>
             <span>Models</span>
             <strong>Linear + Logistic</strong>
@@ -207,15 +208,15 @@
               <strong>8,064</strong>
             </div>
             <div>
-              <span>Labels</span>
-              <strong>Synthetic V/A/D</strong>
-            </div>
+            <span>Labels</span>
+            <strong>Emotion Class</strong>
           </div>
-          <p class="muted">
-            Labels are generated from EEG signal heuristics to create synthetic
-            valence, arousal, and dominance scores for training demos.
-          </p>
         </div>
+        <p class="muted">
+            EEG features are connected to labeled emotion classes in the updated
+            training pipeline and used for multiclass logistic classification.
+        </p>
+      </div>
       </section>
 
       <section id="theory" class="section">
@@ -284,53 +285,76 @@
           </div>
         </div>
 
-        <div class="glass card pipeline-card">
-          <h3>EEG Pipeline (Research View)</h3>
-          <img
-            src="pipeline_diagram.svg"
-            alt="EEG pipeline from input to metrics: preprocess, feature extraction, selection, models, and evaluation."
-            loading="lazy"
-          />
-          <p class="muted">
-            This diagram mirrors common EEG research pipelines and highlights
-            where our linear and logistic regression demo fits.
-          </p>
-        </div>
-
         <div class="theory-visuals">
           <div class="glass card">
-            <h3>32-Channel EEG Map</h3>
+            <h3>Valence-Arousal Emotion Space</h3>
             <img
-              src="channels_diagram.svg"
-              alt="EEG 10–20 system map showing the 32 channels used in this project."
-              loading="lazy"
-            />
-            <p class="muted">
-              F = Frontal, C = Central, T = Temporal, P = Parietal, O = Occipital.
-            </p>
-          </div>
-
-          <div class="glass card">
-            <h3>Frequency Bands & States</h3>
-            <img
-              src="bands_diagram.svg"
-              alt="EEG frequency band ranges with typical brain states."
-              loading="lazy"
-            />
-            <p class="muted">
-              Delta/theta → sleepy or drowsy; alpha → relaxed; beta/gamma → active focus.
-            </p>
-          </div>
-
-          <div class="glass card">
-            <h3>Valence–Arousal Space</h3>
-            <img
-              src="valence_arousal_diagram.svg"
-              alt="Valence arousal plane showing common emotion regions."
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-15-08.jpg"
+              alt="Valence arousal plane showing negative to positive valence and low to high arousal."
               loading="lazy"
             />
             <p class="muted">
               Emotions are mapped by positivity (valence) and intensity (arousal).
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Brain Lobes Overview</h3>
+            <img
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-15-35.jpg"
+              alt="Brain lobe overview: frontal, parietal, temporal, and occipital regions."
+              loading="lazy"
+            />
+            <p class="muted">
+              Emotional processing is strongly linked with frontal and temporal regions.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>EEG Channel Map</h3>
+            <img
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-15-43.jpg"
+              alt="EEG electrode map showing frontal, parietal, temporal, and occipital regions."
+              loading="lazy"
+            />
+            <p class="muted">
+              Channel locations correspond to brain regions used in feature extraction.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Frequency Bands and States</h3>
+            <img
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-15-50.jpg"
+              alt="EEG frequency bands delta theta alpha beta gamma."
+              loading="lazy"
+            />
+            <p class="muted">
+              Delta/theta: sleepy; alpha: relaxed; beta/gamma: active cognition.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>Wearable EEG vs Lab EEG</h3>
+            <img
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-15-56.jpg"
+              alt="Comparison of traditional EEG setup and wearable EEG device."
+              loading="lazy"
+            />
+            <p class="muted">
+              Wearable EEG enables practical emotion AI beyond lab-only setups.
+            </p>
+          </div>
+
+          <div class="glass card">
+            <h3>End-to-End EEG Pipeline</h3>
+            <img
+              src="images/human%20emotion%20recognition/PHOTO-2026-03-15-20-16-04.jpg"
+              alt="EEG pipeline: band separation, feature analysis, selected parameters, and valence detection."
+              loading="lazy"
+            />
+            <p class="muted">
+              Complete flow from EEG signal processing to emotion classification.
             </p>
           </div>
         </div>
